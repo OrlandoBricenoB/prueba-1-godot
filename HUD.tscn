@@ -1,0 +1,147 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/HUD.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Arimo-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/Lobster-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 33
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 41
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=4]
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 2.5, 3.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://fonts/Arimo-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 35
+font_data = SubResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 22
+font_data = SubResource( 5 )
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="CL" type="CanvasLayer" parent="."]
+
+[node name="Salir" type="Button" parent="CL"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -121.5
+margin_right = 121.5
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 2 )
+text = "Salir del Juego"
+
+[node name="Tiempo" type="Label" parent="CL"]
+margin_left = 9.0
+margin_right = 294.0
+margin_bottom = 94.0
+custom_fonts/font = SubResource( 3 )
+text = "Dia"
+align = 1
+valign = 1
+
+[node name="Guardado" type="Label" parent="CL"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 551.0
+margin_top = 227.0
+margin_right = 776.0
+margin_bottom = 340.0
+custom_fonts/font = SubResource( 3 )
+text = "Guardado."
+align = 1
+valign = 1
+
+[node name="anim" type="AnimationPlayer" parent="CL/Guardado"]
+anims/in = SubResource( 4 )
+
+[node name="Name" type="Label" parent="CL"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -329.0
+margin_right = -28.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 3 )
+text = " Jo-Sword"
+align = 2
+valign = 1
+
+[node name="Bottom_bar" type="ColorRect" parent="CL"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.43201
+margin_top = -65.432
+margin_right = 1.43201
+margin_bottom = -1.43201
+color = Color( 0.380392, 0.243137, 0.243137, 1 )
+
+[node name="Controles" type="Label" parent="CL/Bottom_bar"]
+margin_right = 203.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 6 )
+text = "Controles:"
+align = 1
+valign = 1
+
+[node name="1,2" type="Label" parent="CL/Bottom_bar"]
+margin_left = 220.33
+margin_top = 4.55042
+margin_right = 384.33
+margin_bottom = 57.5504
+custom_fonts/font = SubResource( 7 )
+text = "1: Lanzar Kunai. 
+2: Explotar."
+
+[node name="Flechas,Space" type="Label" parent="CL/Bottom_bar"]
+margin_left = 413.246
+margin_top = 5.68805
+margin_right = 600.246
+margin_bottom = 58.688
+custom_fonts/font = SubResource( 7 )
+text = "Flechas: Caminar. 
+Spacebar: Levelup."
+
+[node name="Clic,Z" type="Label" parent="CL/Bottom_bar"]
+margin_left = 643.0
+margin_top = 6.0
+margin_right = 846.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 7 )
+text = "Enter: Guardar.
+Z: Reaccionar."
+
+[node name="Doble_Clic" type="Label" parent="CL/Bottom_bar"]
+margin_left = 893.246
+margin_top = 5.68805
+margin_right = 1090.25
+margin_bottom = 58.688
+custom_fonts/font = SubResource( 7 )
+text = "Doble Clic: Teletransportación.
+Shift + Up: Volar."
+valign = 1
+[connection signal="button_down" from="CL/Salir" to="." method="_on_Salir_button_down"]
