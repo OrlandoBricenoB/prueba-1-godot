@@ -13,8 +13,4 @@ Solo unos días de esfuerzo para terminar esta práctica. Esta completamente doc
 - Sistema de guardado y cargado.
 - Habilidad de vuelo.
 - GUI responsivo.
-- FullScreen.
-
-```
-Pronto lo subo a itch.io, yo no puedo exportar porque mi internet es muy lento.
-```
+- Fullscreen.
